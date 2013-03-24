@@ -3,7 +3,7 @@
 # Cookbook Name:: application_zend
 # Attributes:: application_zend
 #
-# Copyright 2009-2010, Walter Dal Mut.
+# Copyright 2013, Walter Dal Mut.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
