@@ -52,6 +52,23 @@ execute "unzip-zend" do
   command "tar -xzf #{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz --strip 1"
 end
 
+execute "update-composer" do
+	cwd node['zend']['dir']
+	command "php composer.phar self-update"
+end
+
+execute "base-install" do
+    cwd node['zend']['dir']
+	command "php composer.phar install"
+end
+
+execute "install-requires" do
+	cwd node['zend']['dir']
+	node['zend']['composer']['packages'].each do |package| 
+		command "php composer.phar require #{package['name']}:#{package['version']}"
+	end
+end
+
 apache_site "000-default" do
   enable false
 end
