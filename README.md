@@ -43,4 +43,4 @@ Always is your `Vagrantfile`
 
 ```ruby
 config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", "../MyNameModule")
-```ruby
+```
