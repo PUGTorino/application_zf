@@ -15,7 +15,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 ## Attributes
 
 * `node['zend']['version']` - Set the version to download. Using 'latest' (the default) will install the most current version.
-* `node['zend']['dir']` - Set the location to place zend skeleton application files. Default is /var/www.
+* `node['zend']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
 * `node['zend']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
 * `node['zend']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
 
