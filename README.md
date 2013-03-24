@@ -53,6 +53,7 @@ config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", ".
 chef.json = {
 	:zend => {
 		:modules => [
+			"Application",
 			"MyNameModule"
 		],
 # ...
@@ -66,6 +67,7 @@ You can use the
 chef.json = {
 	:zend => {
 		:modules => [
+			"Application",
 			"ZfcBase",
 			"ZfcUser"
 		],
