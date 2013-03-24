@@ -51,17 +51,17 @@ config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", ".
 You can use the 
 
 ```ruby
-	chef.json = {
-		:zend => {
-			:composer => {
-				:packages =>[
-					{
-						:version => "0.1.*",
-						:name => "zf-commons/zfc-user"
-					}
-				]
-			}
+chef.json = {
+	:zend => {
+		:composer => {
+			:packages => [
+				{
+					:version => "0.1.*",
+					:name => "zf-commons/zfc-user"
+				}
+			]
 		}
 	}
+}
 ```
 
