@@ -18,6 +18,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 * `node['zend']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
 * `node['zend']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
 * `node['zend']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
+* `node['zend']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
 * `node['zend']['composer']['packages']` - Array of composer modules to install see dedicated section
 
 ## Example of usage in Vagrant
@@ -46,13 +47,28 @@ Always is your `Vagrantfile`
 config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", "../MyNameModule")
 ```
 
-### Add third parties libraries with Composer
+## Add your module in the configuration
+
+```ruby
+chef.json = {
+	:zend => {
+		:modules => [
+			"MyNameModule"
+		],
+# ...
+```
+
+## Add third parties libraries with Composer
 
 You can use the 
 
 ```ruby
 chef.json = {
 	:zend => {
+		:modules => [
+			"ZfcBase",
+			"ZfcUser"
+		],
 		:composer => {
 			:packages => [
 				{

@@ -69,6 +69,10 @@ execute "install-requires" do
 	end
 end
 
+zend_module "application_modules" do
+	modules node['zend']['modules']
+end
+
 apache_site "000-default" do
   enable false
 end

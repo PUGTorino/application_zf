@@ -1,9 +1,8 @@
 #
-# Author:: Walter Dal Mut (<walter.dalmut@gmail.com>)
 # Cookbook Name:: application_zend
-# Attributes:: application_zend
+# Definition:: zend_module
 #
-# Copyright 2009-2010, Walter Dal Mut.
+# Copyright 2008-2009, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,10 +17,15 @@
 # limitations under the License.
 #
 
-# General settings
-default['zend']['version'] = "latest"
-default['zend']['dir'] = "/var/www/zend"
-default['zend']['server_name'] = [node['fqdn']]
-default['zend']['server_aliases'] = [node['fqdn']]
-default['zend']['modules'] = []
-default['zend']['composer']['packages'] = []
+define :zend_module, :template => "application.conf.erb", :enable => true do
+
+  template "#{node['zend']['dir']}/config/application.config.php" do
+    source params[:template]
+    owner "root"
+    group "root"
+    mode 0644
+    variables(
+      :params => params
+    )
+  end
+end
