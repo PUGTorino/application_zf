@@ -83,3 +83,7 @@ web_app "zend" do
   server_name node['zend']['server_name']
   server_aliases node['zend']['server_aliases']
 end
+
+service "apache2" do
+  action :restart
+end
