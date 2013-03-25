@@ -1,7 +1,7 @@
 #
 # Author:: Walter Dal Mut (<walter.dalmut@gmail.com>)
-# Cookbook Name:: application_zend
-# Attributes:: application_zend
+# Cookbook Name:: application_zf
+# Attributes:: application_zf
 #
 # Copyright 2013, Walter Dal Mut.
 #

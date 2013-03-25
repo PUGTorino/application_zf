@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: application_zend
+# Cookbook Name:: application_zf
 # Recipe:: dev_tools
 #
 # Copyright 2013, Walter Dal Mut.
@@ -18,7 +18,7 @@
 #
 
 include_recipe "apt"
-include_recipe "application_zend"
+include_recipe "application_zf"
 
 package "git"
 

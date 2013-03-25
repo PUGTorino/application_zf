@@ -1,4 +1,4 @@
-name             "application_zend"
+name             "application_zf"
 maintainer       "Walter Dal Mut"
 maintainer_email "walter.dalmut@gmail.com"
 license          "Apache 2.0"

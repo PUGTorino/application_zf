@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: application_zend
+# Cookbook Name:: application_zf
 # Recipe:: default
 #
 # Copyright 2013, Walter Dal Mut.

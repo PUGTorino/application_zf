@@ -28,7 +28,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 # ...
   config.vm.provision :chef_solo do |chef|
 # ...
-  chef.add_recipe "application_zend"
+  chef.add_recipe "application_zf"
 	chef.json = {
 		:zend => {
 			:version => 'zf/release-2.1.0',
@@ -90,7 +90,7 @@ If want to enable the Zend Developer Tools you can add dev_tools in your
 configuration
 
 ```ruby
-chef.add_recipe "application_zend::dev_tools"
+chef.add_recipe "application_zf::dev_tools"
 ```
 
 And remember to add the `ZendDeveloperTools` in your module list

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: application_zend
+# Cookbook Name:: application_zf
 # Definition:: zend_module
 #
 # Copyright 2013, Walter Dal Mut.
