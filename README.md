@@ -20,6 +20,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 * `node['zend']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
 * `node['zend']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
 * `node['zend']['composer']['packages']` - Array of composer modules to install see dedicated section
+* `node['zend']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
 
 ## Example of usage in Vagrant
 
@@ -83,3 +84,55 @@ chef.json = {
 }
 ```
 
+## ZendDeveloperTools integration
+
+If want to enable the Zend Developer Tools you can add dev_tools in your
+configuration
+
+```ruby
+chef.add_recipe "application_zend::dev_tools"
+```
+
+And remember to add the `ZendDeveloperTools` in your module list
+
+```ruby
+chef.json = {
+	:zend => {
+		:modules => [
+			"ZendDeveloperTools",
+			"Application"	
+		]
+	}
+}
+```
+
+### Tune the ZendDeveloperTools version
+
+Set the `dev` version
+
+```ruby
+node['zend']['dev']['version'] = "dev-master"
+```
+
+### Add Zend\Db profiler
+
+Is simple, add the `bjyoungblood/BjyProfiler` package
+
+```ruby
+:composer => {
+	:packages =>[
+		{
+			:version => "dev-master",
+			:name => "bjyoungblood/BjyProfiler"
+		}
+	]
+}
+```
+
+And also enable module `BjyProfiler` after `ZendDeveloperTools`
+
+```ruby
+:modules => [
+	"ZendDeveloperTools",
+	"BjyProfiler"
+```
