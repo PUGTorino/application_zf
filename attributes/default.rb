@@ -25,3 +25,4 @@ default['zend']['server_name'] = [node['fqdn']]
 default['zend']['server_aliases'] = [node['fqdn']]
 default['zend']['modules'] = ["Application"]
 default['zend']['composer']['packages'] = []
+default['zend']['dev']['version'] = "dev-master"
