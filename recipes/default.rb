@@ -63,10 +63,11 @@ execute "base-install" do
 end
 
 execute "install-requires" do
-	cwd node['zend']['dir']
-	node['zend']['composer']['packages'].each do |package| 
-		command "php composer.phar require #{package['name']}:#{package['version']}"
-	end
+    cwd node['zend']['dir']
+    node['zend']['composer']['packages'].each do |package| 
+        command "php composer.phar require #{package['name']}:#{package['version']}"
+    end
+    not_if { node['zend']['composer']['packages'].count == 0 }
 end
 
 zend_module "application_modules" do
