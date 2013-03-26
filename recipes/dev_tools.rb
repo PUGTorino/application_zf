@@ -22,7 +22,7 @@ include_recipe "application_zf"
 
 package "git"
 
-execute "install-requires" do
+execute "install-dev-requires" do
 	cwd node['zend']['dir']
 	command "php composer.phar require zendframework/zend-developer-tools:#{node['zend']['dev']['version']}"
 end
