@@ -8,6 +8,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 
 ### Cookbooks
 
+ * build-essential
  * php
  * apache2
  * openssl

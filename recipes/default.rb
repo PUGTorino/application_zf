@@ -16,15 +16,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+include_recipe "build-essential"
 include_recipe "apt"
 include_recipe "apache2"
 include_recipe "php"
+include_recipe "php::module_apc"
 
-#TODO: add apc
+package "php5-intl"
+package "libpcre3-dev"
+
+# update the main channels
+php_pear_channel 'pear.php.net' do
+  action :update
+end
+
+# install apc pecl with directives
+php_pear "APC" do
+  action :install
+end
 
 path_on_disk = String.new(node['zend']['version'])
 path_on_disk["/"] = "_"
+
 
 if node['zend']['version'] == 'latest'
   require 'open-uri'
