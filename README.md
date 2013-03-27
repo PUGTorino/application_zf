@@ -6,6 +6,9 @@ This cookbook installs and configures Zend Skeleton Application according to the
 
 ### Platform
 
+ * Debian
+ * Ubuntu
+
 ### Cookbooks
 
  * apt
