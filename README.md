@@ -8,6 +8,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
 
 ### Cookbooks
 
+ * apt
  * build-essential
  * php
  * apache2

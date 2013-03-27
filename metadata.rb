@@ -9,7 +9,7 @@ version          "0.0.1"
 recipe "application_zf", "Installs and configures Zend Skeleton Application on a single system"
 recipe "application_zf::dev_tools", "Install ZendDeveloperTools"
 
-%w{ php openssl }.each do |cb|
+%w{ php openssl build-essential apt }.each do |cb|
   depends cb
 end
 
