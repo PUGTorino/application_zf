@@ -25,116 +25,99 @@ This cookbook installs and configures Zend Skeleton Application according to the
 
 ## Example of usage in Vagrant
 
-```ruby
-# ...
-  config.vm.provision :chef_solo do |chef|
-# ...
-  chef.add_recipe "application_zf"
-	chef.json = {
-		:zend => {
-			:version => 'zf/release-2.1.0',
-			:server_name => 'zend.local',
-			:server_aliases => 'my.local'
-		}
-	}
-  end
-# ...
-```
+
+    # ...
+    config.vm.provision :chef_solo do |chef|
+    # ...
+    chef.add_recipe "application_zf"
+        chef.json = {
+            :zend => {
+                :version => 'zf/release-2.1.0',
+                :server_name => 'zend.local',
+                :server_aliases => 'my.local'
+            }
+        }
+    end
+    # ...
 
 ### Vagrant, develop your module using shared folders
 
 Always is your `Vagrantfile`
 
-```ruby
-config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", "../MyNameModule")
-```
+    config.vm.share_folder("my-name-module", "/var/www/zend/module/MyNameModule", "../MyNameModule")
 
 ## Add your module in the configuration
 
-```ruby
-chef.json = {
-	:zend => {
-		:modules => [
-			"Application",
-			"MyNameModule"
-		],
-# ...
-```
+    chef.json = {
+        :zend => {
+            :modules => [
+                "Application",
+                "MyNameModule"
+            ],
+    # ...
 
 ## Add third parties libraries with Composer
 
 You can use the 
 
-```ruby
-chef.json = {
-	:zend => {
-		:modules => [
-			"Application",
-			"ZfcBase",
-			"ZfcUser"
-		],
-		:composer => {
-			:packages => [
-				{
-					:version => "0.1.*",
-					:name => "zf-commons/zfc-user"
-				}
-			]
-		}
-	}
-}
-```
+    chef.json = {
+        :zend => {
+            :modules => [
+                "Application",
+                "ZfcBase",
+                "ZfcUser"
+            ],
+            :composer => {
+                :packages => [
+                    {
+                        :version => "0.1.*",
+                        :name => "zf-commons/zfc-user"
+                    }
+                ]
+            }
+        }
+    }
 
 ## ZendDeveloperTools integration
 
 If want to enable the Zend Developer Tools you can add dev_tools in your
 configuration
 
-```ruby
-chef.add_recipe "application_zf::dev_tools"
-```
+    chef.add_recipe "application_zf::dev_tools"
 
 And remember to add the `ZendDeveloperTools` in your module list
 
-```ruby
-chef.json = {
-	:zend => {
-		:modules => [
-			"ZendDeveloperTools",
-			"Application"	
-		]
-	}
-}
-```
+    chef.json = {
+        :zend => {
+            :modules => [
+                "ZendDeveloperTools",
+                "Application"	
+            ]
+        }
+    }
 
 ### Tune the ZendDeveloperTools version
 
 Set the `dev` version
 
-```ruby
-node['zend']['dev']['version'] = "dev-master"
-```
+    node['zend']['dev']['version'] = "dev-master"
 
 ### Add Zend\Db profiler
 
 Is simple, add the `bjyoungblood/BjyProfiler` package
 
-```ruby
-:composer => {
-	:packages =>[
-		{
-			:version => "dev-master",
-			:name => "bjyoungblood/BjyProfiler"
-		}
-	]
-}
-```
+    :composer => {
+        :packages =>[
+            {
+                :version => "dev-master",
+                :name => "bjyoungblood/BjyProfiler"
+            }
+        ]
+    }
 
 And also enable module `BjyProfiler` after `ZendDeveloperTools`
 
-```ruby
-:modules => [
-	"ZendDeveloperTools",
-	"BjyProfiler"
-```
+    :modules => [
+        "ZendDeveloperTools",
+        "BjyProfiler"
 
