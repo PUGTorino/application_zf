@@ -22,6 +22,7 @@ include_recipe "apache2"
 include_recipe "php"
 include_recipe "php::module_apc"
 
+package "git"
 package "php5-intl"
 package "libpcre3-dev"
 
@@ -75,12 +76,12 @@ execute "base-install" do
 	command "php composer.phar install"
 end
 
-execute "install-requires" do
-    cwd node['zend']['dir']
-    node['zend']['composer']['packages'].each do |package| 
+node['zend']['composer']['packages'].each do |package|
+    execute "install-requires" do
+        cwd node['zend']['dir']
         command "php composer.phar require #{package['name']}:#{package['version']}"
+        not_if { node['zend']['composer']['packages'].count == 0 }
     end
-    not_if { node['zend']['composer']['packages'].count == 0 }
 end
 
 zend_module "application_modules" do
