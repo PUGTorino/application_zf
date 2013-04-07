@@ -26,3 +26,4 @@ default['zend']['server_aliases'] = [node['fqdn']]
 default['zend']['modules'] = ["Application"]
 default['zend']['composer']['packages'] = []
 default['zend']['dev']['version'] = "dev-master"
+default['zend']['skeleton']['repository'] = "https://github.com/zendframework/ZendSkeletonApplication"

@@ -26,9 +26,9 @@ This cookbook installs and configures Zend Skeleton Application according to the
 * `node['zend']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
 * `node['zend']['composer']['packages']` - Array of composer modules to install see dedicated section
 * `node['zend']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
+* `node['zend']['skeleton']['repository']` - Repository used to download Skeleton App. Default is `https://github.com/zendframework/ZendSkeletonApplication)`
 
 ## Example of usage in Vagrant
-
 
     # ...
     config.vm.provision :chef_solo do |chef|

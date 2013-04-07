@@ -43,12 +43,12 @@ path_on_disk["/"] = "_"
 if node['zend']['version'] == 'latest'
   require 'open-uri'
   remote_file  "#{Chef::Config[:file_cache_path]}/latest.tar.gz" do
-    source "https://github.com/zendframework/ZendSkeletonApplication/archive/master.tar.gz"
+    source "#{node['zend']['skeleton']['repository']}/archive/master.tar.gz"
     mode "0644"
   end
 else
   remote_file "#{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz" do
-    source "https://github.com/zendframework/ZendSkeletonApplication/archive/#{node['zend']['version']}.tar.gz"
+    source "#{node['zend']['skeleton']['repository']}/archive/#{node['zend']['version']}.tar.gz"
     mode "0644"
   end
 end
