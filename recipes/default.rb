@@ -20,9 +20,9 @@ include_recipe "build-essential"
 include_recipe "apt"
 include_recipe "apache2"
 include_recipe "php"
-include_recipe "php::module_apc"
 
 package "git"
+package "subversion"
 package "php5-intl"
 package "libpcre3-dev"
 
@@ -64,6 +64,20 @@ end
 execute "unzip-zend" do
   cwd node['zend']['dir']
   command "tar -xzf #{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz --strip 1"
+end
+
+directory "#{node['zend']['dir']}/data" do
+  owner "root"
+  group "root"
+  mode "0777"
+  recursive false
+end
+
+directory "#{node['zend']['dir']}/data/cache" do
+  owner "root"
+  group "root"
+  mode "0777"
+  recursive false
 end
 
 execute "update-composer" do
