@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: application_zf
-# Recipe:: default
+# Recipe:: install
 #
 # Copyright 2013, Walter Dal Mut.
 #
@@ -22,18 +22,14 @@ if path_on_disk.index("/") != nil
     path_on_disk["/"] = "_"
 end
 
+package = node['zend']['version']
+if package == "latest"
+    package = "master"
+end
 
-if node['zend']['version'] == 'latest'
-  require 'open-uri'
-  remote_file  "#{Chef::Config[:file_cache_path]}/latest.tar.gz" do
-    source "#{node['zend']['skeleton']['repository']}/archive/master.tar.gz"
+remote_file "#{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz" do
+    source "#{node['zend']['skeleton']['repository']}/archive/#{package}.tar.gz"
     mode "0644"
-  end
-else
-  remote_file "#{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz" do
-    source "#{node['zend']['skeleton']['repository']}/archive/#{node['zend']['version']}.tar.gz"
-    mode "0644"
-  end
 end
 
 directory "#{node['zend']['dir']}" do
@@ -77,8 +73,8 @@ node['zend']['composer']['packages'].each do |package|
     execute "install-requires" do
         cwd node['zend']['dir']
         command "php composer.phar require #{package['name']}:#{package['version']}"
-        not_if { node['zend']['composer']['packages'].count == 0 }
     end
+    not_if { node['zend']['composer']['packages'].count == 0 }
 end
 
 zend_module "application_modules" do
