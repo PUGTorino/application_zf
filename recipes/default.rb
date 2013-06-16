@@ -21,6 +21,7 @@ include_recipe "apt"
 include_recipe "apache2"
 include_recipe "apache2::mod_php5"
 include_recipe "php"
+include_recipe "php::module_apc"
 
 package "git"
 package "subversion"
@@ -30,11 +31,6 @@ package "libpcre3-dev"
 # update the main channels
 php_pear_channel 'pear.php.net' do
   action :update
-end
-
-# install apc pecl with directives
-php_pear "APC" do
-  action :install
 end
 
 include_recipe "application_zf::install"
