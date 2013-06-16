@@ -4,7 +4,7 @@ maintainer_email "walter.dalmut@gmail.com"
 license          "Apache 2.0"
 description      "Installs/Configures ZendSkeletonApplication"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.0.2"
+version          "0.1.0"
 
 recipe "application_zf", "Installs and configures Zend Skeleton Application on a single system"
 recipe "application_zf::dev_tools", "Install ZendDeveloperTools"
@@ -33,12 +33,12 @@ attribute "application_zf/zend/server_name",
   :display_name => "ZendSkeletonApplication Server Name",
   :description => "ZendSkeletonApplication Server Name",
   :default => "FQDN"
-  
+
 attribute "application_zf/zend/server_aliases",
   :display_name => "ZendSkeletonApplication Server Aliases",
   :description => "ZendSkeletonApplication Server Aliases",
   :default => ["FQDN"]
-  
+
 attribute "application_zf/zend/modules",
   :display_name => "ZendSkeletonApplication Enable modules",
   :description => "Array of Module names that you want to enable in your application.config.php",
