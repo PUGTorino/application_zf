@@ -19,7 +19,7 @@
 
 define :zend_module, :template => "application.conf.erb", :enable => true do
 
-  template "#{node['zend']['dir']}/config/application.config.php" do
+  template "#{node['zf']['dir']}/config/application.config.php" do
     source params[:template]
     owner "root"
     group "root"

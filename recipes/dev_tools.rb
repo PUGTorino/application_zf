@@ -23,12 +23,12 @@ include_recipe "application_zf"
 package "git"
 
 execute "install-dev-requires" do
-	cwd node['zend']['dir']
-	command "php composer.phar require zendframework/zend-developer-tools:#{node['zend']['dev']['version']}"
+	cwd node['zf']['dir']
+	command "php composer.phar require zendframework/zend-developer-tools:#{node['zf']['dev']['version']}"
 end
 
 execute "copy-dev-conf" do
-	cwd node['zend']['dir']
+	cwd node['zf']['dir']
 	command "cp  vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist config/autoload/zenddevelopertools.local.php"
 end
 

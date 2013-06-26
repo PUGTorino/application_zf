@@ -39,11 +39,11 @@ apache_site "000-default" do
   enable false
 end
 
-web_app "zend" do
-  template "zend.conf.erb"
-  docroot "#{node['zend']['dir']}"
+web_app "zf_app" do
+  template "zf_app.conf.erb"
+  docroot "#{node['zf']['dir']}"
   server_name node['fqdn']
-  server_aliases node['zend']['server_aliases']
+  server_aliases node['zf']['server_aliases']
 end
 
 service "apache2" do

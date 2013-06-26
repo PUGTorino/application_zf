@@ -17,22 +17,22 @@
 # limitations under the License.
 #
 
-path_on_disk = String.new(node['zend']['version'])
+path_on_disk = String.new(node['zf']['version'])
 if path_on_disk.index("/") != nil
     path_on_disk["/"] = "_"
 end
 
-package = node['zend']['version']
+package = node['zf']['version']
 if package == "latest"
     package = "master"
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz" do
-    source "#{node['zend']['skeleton']['repository']}/archive/#{package}.tar.gz"
+    source "#{node['zf']['skeleton']['repository']}/archive/#{package}.tar.gz"
     mode "0644"
 end
 
-directory "#{node['zend']['dir']}" do
+directory "#{node['zf']['dir']}" do
   owner "root"
   group "root"
   mode "0755"
@@ -41,18 +41,18 @@ directory "#{node['zend']['dir']}" do
 end
 
 execute "unzip-zend" do
-  cwd node['zend']['dir']
+  cwd node['zf']['dir']
   command "tar -xzf #{Chef::Config[:file_cache_path]}/#{path_on_disk}.tar.gz --strip 1"
 end
 
-directory "#{node['zend']['dir']}/data" do
+directory "#{node['zf']['dir']}/data" do
   owner "root"
   group "root"
   mode "0777"
   recursive false
 end
 
-directory "#{node['zend']['dir']}/data/cache" do
+directory "#{node['zf']['dir']}/data/cache" do
   owner "root"
   group "root"
   mode "0777"
@@ -60,25 +60,25 @@ directory "#{node['zend']['dir']}/data/cache" do
 end
 
 execute "update-composer" do
-	cwd node['zend']['dir']
+	cwd node['zf']['dir']
 	command "php composer.phar self-update"
 end
 
 execute "base-install" do
-    cwd node['zend']['dir']
+    cwd node['zf']['dir']
 	command "php composer.phar install"
 end
 
-node['zend']['composer']['packages'].each do |package|
+node['zf']['composer']['packages'].each do |package|
     execute "install-requires" do
-        cwd node['zend']['dir']
+        cwd node['zf']['dir']
         command "php composer.phar require #{package['name']}:#{package['version']}"
     end
-    not_if { node['zend']['composer']['packages'].count == 0 }
+    not_if { node['zf']['composer']['packages'].count == 0 }
 end
 
 zend_module "application_modules" do
-	modules node['zend']['modules']
+	modules node['zf']['modules']
 end
 
 

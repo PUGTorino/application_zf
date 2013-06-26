@@ -19,11 +19,11 @@
 #
 
 # General settings
-default['zend']['version'] = "latest"
-default['zend']['dir'] = "/var/www/zend"
-default['zend']['server_name'] = node['fqdn']
-default['zend']['server_aliases'] = [node['fqdn']]
-default['zend']['modules'] = ["Application"]
-default['zend']['composer']['packages'] = []
-default['zend']['dev']['version'] = "dev-master"
-default['zend']['skeleton']['repository'] = "https://github.com/zendframework/ZendSkeletonApplication"
+default['zf']['version'] = "latest"
+default['zf']['dir'] = "/var/www/zend"
+default['zf']['server_name'] = node['fqdn']
+default['zf']['server_aliases'] = [node['fqdn']]
+default['zf']['modules'] = ["Application"]
+default['zf']['composer']['packages'] = []
+default['zf']['dev']['version'] = "dev-master"
+default['zf']['skeleton']['repository'] = "https://github.com/zendframework/ZendSkeletonApplication"

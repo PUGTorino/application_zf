@@ -1,6 +1,7 @@
 # Description
 
-This cookbook installs and configures Zend Skeleton Application according to the instructions at https://github.com/zendframework/ZendSkeletonApplication
+This cookbook installs and configures Zend Skeleton Application according to
+the instructions at https://github.com/zendframework/ZendSkeletonApplication
 
 ## Requirements
 
@@ -19,14 +20,14 @@ This cookbook installs and configures Zend Skeleton Application according to the
 
 ## Attributes
 
-* `node['zend']['version']` - Set the version to download. Using 'latest' (the default) will install the most current version.
-* `node['zend']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
-* `node['zend']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
-* `node['zend']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
-* `node['zend']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
-* `node['zend']['composer']['packages']` - Array of composer modules to install see dedicated section
-* `node['zend']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
-* `node['zend']['skeleton']['repository']` - Repository used to download Skeleton App. Default is `https://github.com/zendframework/ZendSkeletonApplication)`
+* `node['zf']['version']` - Set the version to download. Using 'latest' (the default) will install the most current version.
+* `node['zf']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
+* `node['zf']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
+* `node['zf']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
+* `node['zf']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
+* `node['zf']['composer']['packages']` - Array of composer modules to install see dedicated section
+* `node['zf']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
+* `node['zf']['skeleton']['repository']` - Repository used to download Skeleton App. Default is `https://github.com/zendframework/ZendSkeletonApplication)`
 
 ## Example of usage in Vagrant
 
@@ -35,7 +36,7 @@ This cookbook installs and configures Zend Skeleton Application according to the
     # ...
     chef.add_recipe "application_zf"
         chef.json = {
-            :zend => {
+            :zf => {
                 :version => 'zf/release-2.1.0',
                 :server_name => 'zend.local',
                 :server_aliases => 'my.local'
@@ -53,7 +54,7 @@ Always is your `Vagrantfile`
 ## Add your module in the configuration
 
     chef.json = {
-        :zend => {
+        :zf => {
             :modules => [
                 "Application",
                 "MyNameModule"
@@ -62,10 +63,10 @@ Always is your `Vagrantfile`
 
 ## Add third parties libraries with Composer
 
-You can use the 
+You can use the
 
     chef.json = {
-        :zend => {
+        :zf => {
             :modules => [
                 "Application",
                 "ZfcBase",
@@ -92,7 +93,7 @@ configuration
 And remember to add the `ZendDeveloperTools` in your module list
 
     chef.json = {
-        :zend => {
+        :zf => {
             :modules => [
                 "ZendDeveloperTools",
                 "Application"	
@@ -104,7 +105,7 @@ And remember to add the `ZendDeveloperTools` in your module list
 
 Set the `dev` version
 
-    node['zend']['dev']['version'] = "dev-master"
+    node['zf']['dev']['version'] = "dev-master"
 
 ### Add Zend\Db profiler
 
