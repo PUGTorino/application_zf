@@ -73,8 +73,8 @@ node['zf']['composer']['packages'].each do |package|
     execute "install-requires" do
         cwd node['zf']['dir']
         command "php composer.phar require #{package['name']}:#{package['version']}"
+        only_if { package }
     end
-    not_if { node['zf']['composer']['packages'].count == 0 }
 end
 
 zend_module "application_modules" do
