@@ -20,7 +20,7 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 
 ## Attributes
 
-* `node['zf']['version']` - Set the version to download. Using 'latest' (the default) will install the most current version.
+* `node['zf']['version']` - Set the version (Skeleton) to download. Using 'latest' (the default) will install the most current version.
 * `node['zf']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
 * `node['zf']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `[node['fqdn']]`.
 * `node['zf']['modules']` - Array of Module names that you want to enable in your `application.config.php`
