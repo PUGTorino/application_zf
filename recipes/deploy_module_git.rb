@@ -44,3 +44,7 @@ node['zf']['deploy']['modules']['git'].each do |repo|
     end
 end
 
+zend_module "application_modules" do
+	modules node['zf']['modules']
+end
+
