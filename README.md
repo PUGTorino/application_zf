@@ -95,8 +95,8 @@ If you want to deploy your module you have to add the `application_zf::deploy_mo
                 :modules => {
                     :git => [
                         {
-                            :name => "UpClooModule",
-                            :uri => "http://github.com/username/YourDevModule",
+                            :name => "YourDevModule",
+                            :uri => "http://github.com/username/YourDevModule.git",
                             :branch => "master"
                         }
                     ]
