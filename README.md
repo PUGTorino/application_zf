@@ -22,8 +22,7 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 
 * `node['zf']['version']` - Set the version to download. Using 'latest' (the default) will install the most current version.
 * `node['zf']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
-* `node['zf']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
-* `node['zf']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
+* `node['zf']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `[node['fqdn']]`.
 * `node['zf']['modules']` - Array of Module names that you want to enable in your `application.config.php`
 * `node['zf']['composer']['packages']` - Array of composer modules to install see dedicated section
 * `node['zf']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
@@ -37,9 +36,9 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
     # ...
     chef.add_recipe "application_zf"
         chef.json = {
+            :fqdn => "app.local",
             :zf => {
                 :version => 'zf/release-2.1.0',
-                :server_name => 'zend.local',
                 :server_aliases => 'my.local'
             }
         }

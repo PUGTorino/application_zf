@@ -4,7 +4,7 @@ maintainer_email "walter.dalmut@gmail.com"
 license          "Apache 2.0"
 description      "Installs/Configures ZendSkeletonApplication"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.3.0"
+version          "0.3.1"
 
 recipe "application_zf::default", "Installs and configures Zend Skeleton Application on a single system using also apache2 recipe"
 recipe "application_zf::install", "Install and configures Zend Skeleton Application without web server suppport"
@@ -29,11 +29,6 @@ attribute "application_zf/zf/dir",
   :display_name => "ZendSkeletonApplication installation directory",
   :description => "Location to place ZendSkeletonApplication files.",
   :default => "/var/www/zend"
-
-attribute "application_zf/zf/server_name",
-  :display_name => "ZendSkeletonApplication Server Name",
-  :description => "ZendSkeletonApplication Server Name",
-  :default => "FQDN"
 
 attribute "application_zf/zf/server_aliases",
   :display_name => "ZendSkeletonApplication Server Aliases",

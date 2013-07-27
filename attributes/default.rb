@@ -21,7 +21,6 @@
 # General settings
 default['zf']['version'] = "latest"
 default['zf']['dir'] = "/var/www/zend"
-default['zf']['server_name'] = node['fqdn']
 default['zf']['server_aliases'] = [node['fqdn']]
 default['zf']['modules'] = ["Application"]
 default['zf']['composer']['packages'] = []
