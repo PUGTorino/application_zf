@@ -33,7 +33,7 @@ execute "copy-dev-conf" do
 end
 
 zend_dev_index "dev_module" do
-	
+
 end
 
 apache_site "000-default" do

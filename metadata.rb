@@ -4,7 +4,7 @@ maintainer_email "walter.dalmut@gmail.com"
 license          "Apache 2.0"
 description      "Installs/Configures ZendSkeletonApplication"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.2.0"
+version          "0.3.0"
 
 recipe "application_zf::default", "Installs and configures Zend Skeleton Application on a single system using also apache2 recipe"
 recipe "application_zf::install", "Install and configures Zend Skeleton Application without web server suppport"
@@ -54,3 +54,9 @@ attribute "application_zf/zf/dev/version",
   :display_name => "ZendDeveloperTools version",
   :description => "Set the version of ZendDeveloperTools module",
   :default => "dev-master"
+
+attribute "application_zf/zf/deploy/modules/git",
+    :display_name => "Deploy git based modules",
+    :description => "Add a new module using git strategy",
+    :default => []
+

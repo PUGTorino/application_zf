@@ -24,10 +24,11 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 * `node['zf']['dir']` - Set the location to place zend skeleton application files. Default is `/var/www`.
 * `node['zf']['server_name']` - Set the ServerName used in apache vhost. Default is `node['fqdn']`.
 * `node['zf']['server_aliases']` - Array of ServerAliases used in apache vhost. Default is `node['fqdn']`.
-* `node['zf']['modules']` - Array of Module names that you want to enable in your `application.config.php` 
+* `node['zf']['modules']` - Array of Module names that you want to enable in your `application.config.php`
 * `node['zf']['composer']['packages']` - Array of composer modules to install see dedicated section
 * `node['zf']['dev']['version']` - Set the version of `ZendDeveloperTools` module. Default is `dev-master`
 * `node['zf']['skeleton']['repository']` - Repository used to download Skeleton App. Default is `https://github.com/zendframework/ZendSkeletonApplication)`
+* `node['zf']['deploy']['modules']['git']` - Array of git zf2 module repositories that you want to deploy
 
 ## Example of usage in Vagrant
 
@@ -83,9 +84,34 @@ You can use the
         }
     }
 
+## Deploy your modules
+
+If you want to deploy your module you have to add the `application_zf::deploy_module_git` recipe.
+
+```
+    chef.json = {
+        :zf => {
+            :deploy => {
+                :modules => {
+                    :git => [
+                        {
+                            :name => "UpClooModule",
+                            :uri => "http://github.com/username/YourDevModule",
+                            :branch => "master"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+```
+
+The `branch` key, is in fact the `revision`, for that reason you can also use a
+git commit id.
+
 ## ZendDeveloperTools integration
 
-If want to enable the Zend Developer Tools you can add dev_tools in your
+If want to enable the Zend Developer Tools you can add `application_zf::dev_tools` in your
 configuration
 
     chef.add_recipe "application_zf::dev_tools"
@@ -96,7 +122,7 @@ And remember to add the `ZendDeveloperTools` in your module list
         :zf => {
             :modules => [
                 "ZendDeveloperTools",
-                "Application"	
+                "Application"
             ]
         }
     }

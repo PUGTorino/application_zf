@@ -27,3 +27,4 @@ default['zf']['modules'] = ["Application"]
 default['zf']['composer']['packages'] = []
 default['zf']['dev']['version'] = "dev-master"
 default['zf']['skeleton']['repository'] = "https://github.com/zendframework/ZendSkeletonApplication"
+default['zf']['deploy']['modules']['git'] = []
