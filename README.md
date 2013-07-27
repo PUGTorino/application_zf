@@ -29,6 +29,15 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 * `node['zf']['skeleton']['repository']` - Repository used to download Skeleton App. Default is `https://github.com/zendframework/ZendSkeletonApplication)`
 * `node['zf']['deploy']['modules']['git']` - Array of git zf2 module repositories that you want to deploy
 
+## Getting Started
+
+This group of recipes install and configure a Zend Framework Standard Skeleton
+application or something based on it.
+
+Essentially you have to use the `application_zf::default` to install a whole
+system (Apache2 + PHP + ZendFramework/SkeletonApplication), in addition you
+can use single recipes to create your personal infrastructure.
+
 ## Example of usage in Vagrant
 
     # ...
@@ -36,7 +45,6 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
     # ...
     chef.add_recipe "application_zf"
         chef.json = {
-            :fqdn => "app.local",
             :zf => {
                 :version => 'zf/release-2.1.0',
                 :server_aliases => 'my.local'
@@ -61,6 +69,8 @@ Always is your `Vagrantfile`
             ],
     # ...
 
+To update your module list you have to use the `application_zf::deploy_module_list`
+
 ## Add third parties libraries with Composer
 
 You can use the
@@ -82,6 +92,8 @@ You can use the
             }
         }
     }
+
+To deploy your additional composer packages you have to use `application_zf::deploy_composer_packages`
 
 ## Deploy your modules
 
@@ -105,6 +117,8 @@ If you want to deploy your module you have to add the `application_zf::deploy_mo
 
 The `branch` key, is in fact the `revision`, for that reason you can also use a
 git commit id.
+
+To deploy your additional module you have to use `application_zf::deploy_module_git`
 
 ## ZendDeveloperTools integration
 

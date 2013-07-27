@@ -30,22 +30,22 @@ package "libpcre3-dev"
 
 # update the main channels
 php_pear_channel 'pear.php.net' do
-  action :update
+    action :update
 end
 
-include_recipe "application_zf::install"
+include_recipe "application_zf::install_skeleton"
 
 apache_site "000-default" do
-  enable false
+    enable false
 end
 
 web_app "zf_app" do
-  template "zf_app.conf.erb"
-  docroot "#{node['zf']['dir']}"
-  server_name node['fqdn']
-  server_aliases node['zf']['server_aliases']
+    template "zf_app.conf.erb"
+    docroot "#{node['zf']['dir']}"
+    server_name node['fqdn']
+    server_aliases node['zf']['server_aliases']
 end
 
 service "apache2" do
-  action :restart
+    action :restart
 end

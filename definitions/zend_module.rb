@@ -18,14 +18,13 @@
 #
 
 define :zend_module, :template => "application.conf.erb", :enable => true do
-
-  template "#{node['zf']['dir']}/config/application.config.php" do
-    source params[:template]
-    owner "root"
-    group "root"
-    mode 0644
-    variables(
-      :params => params
-    )
-  end
+    template "#{node['zf']['dir']}/config/application.config.php" do
+        source params[:template]
+        owner "root"
+        group "root"
+        mode 0644
+        variables(
+            :params => params
+        )
+    end
 end

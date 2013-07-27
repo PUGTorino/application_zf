@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: application_zf
-# Recipe:: dev_tools
+# Recipe:: deploy_composer_packages
 #
 # Copyright 2013, Walter Dal Mut.
 #
@@ -17,26 +17,14 @@
 # limitations under the License.
 #
 
-include_recipe "apt"
-include_recipe "application_zf"
-
 package "git"
+package "subversion"
 
-execute "install-dev-requires" do
-    cwd node['zf']['dir']
-    command "php composer.phar require zendframework/zend-developer-tools:#{node['zf']['dev']['version']}"
-end
-
-execute "copy-dev-conf" do
-    cwd node['zf']['dir']
-    command "cp  vendor/zendframework/zend-developer-tools/config/zenddevelopertools.local.php.dist config/autoload/zenddevelopertools.local.php"
-end
-
-zend_dev_index "dev_module" do
-
-end
-
-apache_site "000-default" do
-    enable false
+node['zf']['composer']['packages'].each do |package|
+    execute "install-requires" do
+        cwd node['zf']['dir']
+        command "php composer.phar require #{package['name']}:#{package['version']}"
+        only_if { package }
+    end
 end
 

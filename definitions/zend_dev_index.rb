@@ -18,11 +18,10 @@
 #
 
 define :zend_dev_index, :template => "index.php.conf.erb", :enable => true do
-
-  template "#{node['zf']['dir']}/public/index.php" do
-    source params[:template]
-    owner "root"
-    group "root"
-    mode 0644
-  end
+    template "#{node['zf']['dir']}/public/index.php" do
+        source params[:template]
+        owner "root"
+        group "root"
+        mode 0644
+    end
 end

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: application_zf
-# Recipe:: install
+# Recipe:: install_skeleton
 #
 # Copyright 2013, Walter Dal Mut.
 #
@@ -60,25 +60,12 @@ directory "#{node['zf']['dir']}/data/cache" do
 end
 
 execute "update-composer" do
-	cwd node['zf']['dir']
-	command "php composer.phar self-update"
+    cwd node['zf']['dir']
+    command "php composer.phar self-update"
 end
 
 execute "base-install" do
     cwd node['zf']['dir']
-	command "php composer.phar install"
+    command "php composer.phar install"
 end
-
-node['zf']['composer']['packages'].each do |package|
-    execute "install-requires" do
-        cwd node['zf']['dir']
-        command "php composer.phar require #{package['name']}:#{package['version']}"
-        only_if { package }
-    end
-end
-
-zend_module "application_modules" do
-	modules node['zf']['modules']
-end
-
 

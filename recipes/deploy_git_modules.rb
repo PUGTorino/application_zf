@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: application_zf
-# Recipe:: deploy_module_git
+# Recipe:: deploy_git_modules
 #
 # Copyright 2013, Walter Dal Mut.
 #
@@ -42,9 +42,5 @@ node['zf']['deploy']['modules']['git'].each do |repo|
         end
         action :deploy
     end
-end
-
-zend_module "application_modules" do
-	modules node['zf']['modules']
 end
 
