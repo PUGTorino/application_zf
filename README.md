@@ -87,7 +87,6 @@ You can use the
 
 If you want to deploy your module you have to add the `application_zf::deploy_module_git` recipe.
 
-```
     chef.json = {
         :zf => {
             :deploy => {
@@ -103,7 +102,6 @@ If you want to deploy your module you have to add the `application_zf::deploy_mo
             }
         }
     }
-```
 
 The `branch` key, is in fact the `revision`, for that reason you can also use a
 git commit id.
