@@ -35,7 +35,3 @@ zend_dev_index "dev_module" do
 
 end
 
-apache_site "000-default" do
-    enable false
-end
-
