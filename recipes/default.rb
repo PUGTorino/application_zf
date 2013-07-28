@@ -15,18 +15,33 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+case node['platform_family']
+when
+    "fedora", "rhel", "centos"
+    include_recipe "yum"
+when "debian", "ubuntu"
+    include_recipe "apt"
+end
+
 include_recipe "build-essential"
-include_recipe "apt"
 include_recipe "apache2"
 include_recipe "apache2::mod_php5"
 include_recipe "php"
-include_recipe "php::module_apc"
 
 package "git"
 package "subversion"
-package "php5-intl"
-package "libpcre3-dev"
+case node['platform_family']
+when
+    "fedora", "rhel", "centos"
+    package "php-intl"
+    package "pcre-devel"
+when
+    "debian", "ubuntu"
+    include_recipe "php::module_apc"
+    package "php5-intl"
+    package "libpcre3-dev"
+end
 
 # update the main channels
 php_pear_channel 'pear.php.net' do

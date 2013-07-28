@@ -5,14 +5,21 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 
 ## Requirements
 
+This project is basically platform independent but the `application_zf::default`
+wants to install a base system.
+
 ### Platform
 
  * Debian
  * Ubuntu
+ * Rhel
+ * Fedora
+ * CentOS
 
 ### Cookbooks
 
  * apt
+ * yum
  * build-essential
  * php
  * apache2
