@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe "apt"
-include_recipe "application_zf"
+include_recipe "application_zf::install_skeleton"
 
 package "git"
 
