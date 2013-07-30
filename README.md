@@ -5,16 +5,17 @@ the instructions at https://github.com/zendframework/ZendSkeletonApplication
 
 ## Requirements
 
-This project is basically platform independent but the `application_zf::default`
-wants to install a base system.
+This project is platform independent `application_zf::install_skeleton`.
+
+The recipe `application_zf::default` install a typical system (Apache2 - PHP5 - ZF Skeleton).
 
 ### Platform
 
  * Debian
  * Ubuntu
- * Rhel
- * Fedora
- * CentOS
+ * Rhel     (not tested)
+ * Fedora   (not tested)
+ * CentOS   (not tested)
 
 ### Cookbooks
 
@@ -41,9 +42,18 @@ wants to install a base system.
 This group of recipes install and configure a Zend Framework Standard Skeleton
 application or something based on it.
 
-Essentially you have to use the `application_zf::default` to install a whole
-system (Apache2 + PHP + ZendFramework/SkeletonApplication), in addition you
-can use single recipes to create your personal infrastructure.
+Essentially you have to use the `application_zf::default` to install a standard
+system (Apache2 + PHP + ZendFramework/SkeletonApplication). If you prefer, you
+can use single recipes in order to create your personal infrastructure.
+
+## Deploy cycles
+
+ * `application_zf::deploy_git_modules`
+    * Deploy your git modules in `module` folder
+ * `application_zf::deploy_composer_packages`
+    * Deploy composer packages `vendor` folder
+ * `application_zf::deploy_modules_list`
+    * Deploy your module list `application.config.php` configuration file
 
 ## Example of usage in Vagrant
 
