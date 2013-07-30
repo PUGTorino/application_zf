@@ -86,7 +86,7 @@ Always is your `Vagrantfile`
             ],
     # ...
 
-To update your module list you have to use the `application_zf::deploy_module_list`
+To update your module list you have to use the `application_zf::deploy_modules_list`
 
 ## Add third parties libraries with Composer
 
@@ -114,7 +114,7 @@ To deploy your additional composer packages you have to use `application_zf::dep
 
 ## Deploy your modules
 
-If you want to deploy your module you have to add the `application_zf::deploy_module_git` recipe.
+If you want to deploy your module you have to add the `application_zf::deploy_git_modules` recipe.
 
     chef.json = {
         :zf => {
@@ -135,7 +135,7 @@ If you want to deploy your module you have to add the `application_zf::deploy_mo
 The `branch` key, is in fact the `revision`, for that reason you can also use a
 git commit id.
 
-To deploy your additional module you have to use `application_zf::deploy_module_git`
+To deploy your additional module you have to use `application_zf::deploy_git_modules`
 
 ## ZendDeveloperTools integration
 
