@@ -4,7 +4,7 @@ maintainer_email "walter.dalmut@gmail.com"
 license          "Apache 2.0"
 description      "Installs/Configures ZendSkeletonApplication"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.3.1"
+version          "0.4.0"
 
 recipe "application_zf::default", "Installs and configures Zend Skeleton Application on a single system using also apache2 recipe"
 recipe "application_zf::install", "Install and configures Zend Skeleton Application without web server suppport"
@@ -16,7 +16,7 @@ end
 
 depends "apache2", ">= 0.99.4"
 
-%w{ debian ubuntu }.each do |os|
+%w{ debian ubuntu centos fedora rhel }.each do |os|
   supports os
 end
 
